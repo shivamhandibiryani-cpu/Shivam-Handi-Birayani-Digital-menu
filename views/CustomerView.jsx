@@ -44,6 +44,7 @@ const OptimizedImage = ({ src, alt, className, width = 600 }) => {
     }
   };
 
+
   return (
     <div className={`relative overflow-hidden bg-[#F5E6D3] ${className}`}>
       <img
@@ -207,13 +208,15 @@ const openMyOrders = () => {
             <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-[#4F7942] mt-1.5 opacity-80">Best Biryani in Janakpur</p>
           </div>
 <div className="flex items-center gap-2 sm:gap-3">
-             <Link to="/owner" className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-[#4B3621]/40 hover:text-[#4B3621] transition-all">
+          {/* Future feature buttons - currently hidden
+            <Link to="/owner" className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-[#4B3621]/40 hover:text-[#4B3621] transition-all ">
                Dashboard
-             </Link>
+             </Link> */}
              <button
               onClick={() => setAiHelperOpen(true)}
               className="relative bg-gradient-to-br from-[#D4A373] to-[#4F7942] text-white p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl shadow-[#4F7942]/30 transition-all active:scale-95 hover:scale-105"
               title="Ask for recommendations"
+              hidden
             >
               <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -223,12 +226,14 @@ const openMyOrders = () => {
              <button
               onClick={openMyOrders}
               className="bg-[#4B3621] text-white p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl shadow-[#4B3621]/20 transition-all active:scale-95"
+              hidden
             >
               <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
             </button>
              <button
               onClick={() => setIsCartOpen(true)}
               className={`relative bg-[#4B3621] text-white p-3 sm:p-4 rounded-xl sm:rounded-2xl shadow-xl shadow-[#4B3621]/20 transition-all active:scale-95 ${badgePop ? 'scale-110' : 'scale-100'}`}
+              hidden
             >
               <svg className="w-5 h-5 sm:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
               {cartCount > 0 && (
@@ -283,7 +288,7 @@ const openMyOrders = () => {
         </div>
       </section>
 
-      <nav className="sticky top-[72px] sm:top-[96px] z-40 bg-[#FDF5E6]/80 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-5 border-b border-[#4B3621]/5 overflow-x-auto no-scrollbar">
+      <nav className="sticky top-[92px] sm:top-[96px] z-40 bg-[#FDF5E6]/80 backdrop-blur-md px-4 sm:px-6 py-3 sm:py-5 border-b border-[#4B3621]/5 overflow-x-auto no-scrollbar">
         <div className="max-w-7xl mx-auto flex gap-3 sm:gap-4 scroll-smooth">
           {CATEGORIES.map(cat => (
             <button
@@ -319,7 +324,7 @@ const openMyOrders = () => {
               <div className="flex flex-col flex-1 px-1 sm:px-2">
                 <h3 onClick={() => setSelectedDetailItem(item)} className="text-xs sm:text-2xl font-serif font-bold text-[#4B3621] mb-1 sm:mb-2 group-hover:text-[#D4A373] transition-colors cursor-pointer">{item.name}</h3>
                 <p className="text-[11px] sm:text-sm text-[#4B3621]/60 leading-relaxed flex-1 italic line-clamp-2 mb-2 sm:mb-6">{item.description}</p>
-                <button onClick={() => addToCart(item)} className="w-full bg-[#4B3621] text-white py-2 sm:py-5 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-sm uppercase tracking-widest flex justify-center items-center gap-2 mb-1 sm:gap-3 shadow-lg shadow-[#4B3621]/10"><span>+</span> Add to Tray</button>
+                <button onClick={() => addToCart(item)} className="w-full bg-[#4B3621] text-white py-2 sm:py-5 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-sm uppercase tracking-widest flex justify-center items-center gap-2 mb-1 sm:gap-3 shadow-lg shadow-[#4B3621]/10 hidden"><span>+</span> Add to Tray</button>
               </div>
             </div>
           ))}
@@ -360,7 +365,7 @@ const openMyOrders = () => {
                     </div>
                  </div>
                  <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <button onClick={() => { addToCart(selectedDetailItem); setSelectedDetailItem(null); }} className="flex-1 bg-[#4B3621] text-white py-5 sm:py-6 rounded-xl sm:rounded-[2rem] text-lg sm:text-xl font-black shadow-2xl shadow-[#4B3621]/30">Add to Tray</button>
+                    <button onClick={() => { addToCart(selectedDetailItem); setSelectedDetailItem(null); }} className="flex-1 bg-[#4B3621] text-white py-5 sm:py-6 rounded-xl sm:rounded-[2rem] text-lg sm:text-xl font-black shadow-2xl shadow-[#4B3621]/30" hidden>Add to Tray</button>
                     <button onClick={() => setSelectedDetailItem(null)} className="px-8 sm:px-10 py-5 sm:py-6 border-2 border-[#4B3621]/10 rounded-xl sm:rounded-[2rem] font-black text-[#4B3621]/50">Close</button>
                  </div>
               </div>
