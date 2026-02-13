@@ -76,4 +76,5 @@ This project brings the traditional restaurant menu into the digital age. Instea
 
 <div align="center">
   <p>🍛 Made with ❤️ for Shivam Handi Biryani, Janakpur</p>
+  <p>From TigraTech</p>
 </div>
