@@ -642,6 +642,7 @@ const openMyOrders = () => {
         .animate-fade-in { animation: fade-in 0.8s ease-out; }
         .animate-scale-in { animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
       `}</style>
+      <p className="text-center text-xm text-dark/40 mt-4 mb-4">Digital Menu Made By &copy; <i><a href="https://taigra-nexus-lab.onrender.com/" target="_blank"> Taigra Nexus Labs Pvt. Ltd. </a></i></p>
     </div>
   );
 };
