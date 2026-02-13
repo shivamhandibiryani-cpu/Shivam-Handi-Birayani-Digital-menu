@@ -220,8 +220,35 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
+// Serve static files from dist folder (for production)
+app.use(express.static(path.join(__dirname, 'dist'), {
+  index: 'index.html',
+  setHeaders: (res, filePath) => {
+    // Set correct MIME types for JavaScript and module files
+    if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    } else if (filePath.endsWith('.jsx')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    } else if (filePath.endsWith('.wasm')) {
+      res.setHeader('Content-Type', 'application/wasm');
+    }
+  }
+}));
+
+// Handle React Router - serve index.html for SPA routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'), (err) => {
+    // If file not found, check if we're in development mode
+    if (err) {
+      console.error('Error serving file:', err.message);
+      // In development, redirect to Vite dev server
+      if (process.env.NODE_ENV !== 'production') {
+        return res.redirect('http://localhost:3000');
+      }
+      // In production, return 404
+      res.status(404).json({ error: 'File not found. Please run npm run build first.' });
+    }
+  });
 });
 
 app.listen(PORT, () => {
