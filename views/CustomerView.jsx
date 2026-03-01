@@ -730,7 +730,7 @@ const openMyOrders = () => {
                 &copy; {new Date().getFullYear()} Shivam Handi Biryani. All rights reserved.
               </p>
               <p className="text-sm text-[#FDF5E6]/60">
-                Digital Menu Made By <i><a href="https://taigra-nexus-lab.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4A373] transition-colors">Taigra Nexus Labs Pvt. Ltd.</a></i>
+                Digital Menu Made By <i><a href="https://taigra-nexus-labs.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D4A373] transition-colors">Taigra Nexus Labs Pvt. Ltd.</a></i>
               </p>
             </div>
           </div>
